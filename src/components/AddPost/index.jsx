@@ -6,8 +6,7 @@ export default function AddPost(){
     return(
         <li>
             <AddPostButton>
-                {/* <AddIcon /> */}
-                Postar
+                <AddIcon />
             </AddPostButton>
         </li>
     )

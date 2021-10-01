@@ -7,6 +7,7 @@ export const AddPostButton = styled.button`
     border: 3px solid #fff;
     background-color: rgba(0, 0, 0, 0.04);
     font-size: 24px;
+    font-family: "Roboto";
 
     padding: 10px;
     height: 50px;
