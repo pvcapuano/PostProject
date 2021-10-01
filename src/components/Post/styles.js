@@ -19,6 +19,8 @@ export const Container = styled.div`
     h2 {
         color: #1e1e1e;
         font-family: "Roboto";
+        font-size: 1rem;
+        text-align: center;
     }
 
     p { 
