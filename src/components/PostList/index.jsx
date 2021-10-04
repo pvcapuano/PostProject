@@ -11,7 +11,7 @@ export default function PostList() {
     const [feeds, setFeeds] = useState([])
 
     useEffect(() => {
-        api.get("/feeds", { headers: { 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTMsInVzZXJuYW1lIjoibHVpemhycWFzQGdtYWlsLmNvbSIsImlhdCI6MTYzMzM2MTgzNSwiZXhwIjoxNjMzMzY1NDM1fQ.K0Ub5nLxPwg7COka0rKEGez79MdE9WvERTq76F_5E0c'}}).then((response) => {
+        api.get("/feeds", { headers: { 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoic3RyaW5nIiwiaWF0IjoxNjMzMzgyNjc1LCJleHAiOjE2MzMzODYyNzV9.zmcxHgCGXUFYv-tJ2Cf0w3IxD8osA3wDnfpn81GuD08'}}).then((response) => {
             setFeeds(response.data)
             console.log(response.data)
         })
@@ -26,7 +26,7 @@ export default function PostList() {
                     <Post
                     key={feed.id}
                     id={feed.id}
-                    title={feed.username}
+                    title={feed.author.username}
                     description={feed.content}
                     liked={feed.likes}
                     />

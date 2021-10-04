@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 
 import { IoTrashBin, IoThumbsUp, IoPencil } from "react-icons/io5"
+import { PostContext } from "../../contexts/PostContext";
 import { Container, ButtonArea, Button } from "./styles";
 
 
 export default function Post({id, title, description, liked}){
+
+    const { handleEdit } = useContext(PostContext)
+
     return(
         <li>
             <Container>
@@ -14,7 +18,7 @@ export default function Post({id, title, description, liked}){
                     <Button liked={liked}>
                         <IoThumbsUp />
                     </Button>
-                    <Button>
+                    <Button onClick={() => handleEdit(title, description)}>
                         <IoPencil />
                     </Button>
                     <Button>

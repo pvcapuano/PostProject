@@ -10,11 +10,23 @@ export function PostContextProvider({children}) {
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
 
+    function handleEdit(postTitle, postContent) {
+        setTitle(postTitle)
+        setContent(postContent)
+        setOpenFormModal(true)
+    }
+
     function handleAdd() {
         setOpenFormModal(true)
     }
 
     function handleClose() {
+        if(title) {
+            setTitle('')
+        if(content) {
+            setContent('')
+        }
+        }
         setOpenFormModal(false)        
     }
 
@@ -31,7 +43,7 @@ export function PostContextProvider({children}) {
         const post = {
             title, content
         }
-        api.post("/feed", post)
+        api.post("/feed",  post)
         setOpenFormModal(false)  
     }
 
@@ -45,7 +57,8 @@ export function PostContextProvider({children}) {
         setContent,
         titleHandler,
         contentHandler,
-        handleSubmit
+        handleSubmit,
+        handleEdit
         }}>
             {children}
             {openFormModal && <FormModal />}
