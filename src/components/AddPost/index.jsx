@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
+
+import { PostContext } from "../../contexts/PostContext";
 
 import { AddPostButton, AddIcon } from './styles'
 
 export default function AddPost(){
+    const { handleAdd } = useContext(PostContext)
+    
     return(
         <li>
-            <AddPostButton>
+            <AddPostButton onClick={handleAdd}>
                 <AddIcon />
             </AddPostButton>
         </li>
