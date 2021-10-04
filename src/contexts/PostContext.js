@@ -9,10 +9,12 @@ export function PostContextProvider({children}) {
     const [openFormModal, setOpenFormModal] = useState(false)
     const [title, setTitle] = useState("")
     const [content, setContent] = useState("")
+    const [id, setId] = useState(false)
 
-    function handleEdit(postTitle, postContent) {
+    function handleEdit(postId, postTitle, postContent) {
         setTitle(postTitle)
         setContent(postContent)
+        setId(postId)
         setOpenFormModal(true)
     }
 
@@ -34,16 +36,22 @@ export function PostContextProvider({children}) {
         setTitle(event.target.value)
     }
 
+    function handleLike(id) {
+        api.patch(`reaction/${id}`)
+    }
+
     function contentHandler(event) {
         setContent(event.target.value)   
     }
 
     function handleSubmit(event) {
         event.preventDefault()
+
         const post = {
             title, content
         }
-        api.post("/feed",  post)
+        api.post("/feed", post, { headers: { 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJuYW1lIjoic3RyaW5nIiwiaWF0IjoxNjMzMzg1MTc3LCJleHAiOjE2MzMzODg3Nzd9.WaR9w6J7HDIM5lM1KUbBC3CGGW6c_OPOByfS-2iJwbI'}})
+        
         setOpenFormModal(false)  
     }
 
@@ -58,7 +66,10 @@ export function PostContextProvider({children}) {
         titleHandler,
         contentHandler,
         handleSubmit,
-        handleEdit
+        handleEdit,
+        id,
+        setId,
+        handleLike
         }}>
             {children}
             {openFormModal && <FormModal />}

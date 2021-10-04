@@ -31,8 +31,8 @@ export default function PostList() {
                     liked={feed.likes}
                     />
                 ))}
-                <AddPost />
             </PostListWrapper>
+            <AddPost />
         </Container>
     )
 }

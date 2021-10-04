@@ -7,7 +7,7 @@ import { Container, ButtonArea, Button } from "./styles";
 
 export default function Post({id, title, description, liked}){
 
-    const { handleEdit } = useContext(PostContext)
+    const { handleEdit, handleLike } = useContext(PostContext)
 
     return(
         <li>
@@ -15,10 +15,10 @@ export default function Post({id, title, description, liked}){
                 <h2>{title}</h2>
                 <p>{description}</p>
                 <ButtonArea>
-                    <Button liked={liked}>
+                    <Button liked={liked} onClick={() => handleLike(id)}>
                         <IoThumbsUp />
                     </Button>
-                    <Button onClick={() => handleEdit(title, description)}>
+                    <Button onClick={() => handleEdit(id, title, description)}>
                         <IoPencil />
                     </Button>
                     <Button>

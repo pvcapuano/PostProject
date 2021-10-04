@@ -21,6 +21,9 @@ export const AddPostButton = styled.button`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+
+    margin-top: 30px;
+    margin-bottom: 30px;
 `
 
 export const AddIcon = styled(IoAdd)`
